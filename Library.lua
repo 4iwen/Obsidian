@@ -1528,6 +1528,9 @@ do
             end
 
             KeyPicker:Update()
+            
+            Library:SafeCallback(KeyPicker.ChangedCallback, KeyPicker.Value)
+            Library:SafeCallback(KeyPicker.Changed, KeyPicker.Value)
         end
 
         function KeyPicker:SetText(Text)
@@ -1921,15 +1924,18 @@ do
             ColorPicker.Transparency = Info.Transparency and Transparency or 0
             ColorPicker:SetHSVFromRGB(Color)
             ColorPicker:Display()
+
+            Library:SafeCallback(ColorPicker.Callback, ColorPicker.Value)
+            Library:SafeCallback(ColorPicker.Changed, ColorPicker.Value)
         end
 
         function ColorPicker:SetValueRGB(Color, Transparency)
             ColorPicker.Transparency = Info.Transparency and Transparency or 0
             ColorPicker:SetHSVFromRGB(Color)
-            --ColorPicker:Display()
-
-            -- Trigger callbacks
-            ColorPicker:Update()
+            ColorPicker:Display()
+            
+            Library:SafeCallback(ColorPicker.Callback, ColorPicker.Value)
+            Library:SafeCallback(ColorPicker.Changed, ColorPicker.Value)
         end
 
         Holder.MouseButton1Click:Connect(ColorMenu.Toggle)
