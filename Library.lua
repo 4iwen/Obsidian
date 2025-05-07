@@ -1926,7 +1926,10 @@ do
         function ColorPicker:SetValueRGB(Color, Transparency)
             ColorPicker.Transparency = Info.Transparency and Transparency or 0
             ColorPicker:SetHSVFromRGB(Color)
-            ColorPicker:Display()
+            --ColorPicker:Display()
+
+            -- Trigger callbacks
+            ColorPicker:Update()
         end
 
         Holder.MouseButton1Click:Connect(ColorMenu.Toggle)
